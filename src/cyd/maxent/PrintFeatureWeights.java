@@ -97,7 +97,7 @@ public class PrintFeatureWeights
 									Entry<String, Double> o1,
 									Entry<String, Double> o2)
 							{
-								return -1 * o1.getValue().compareTo(o2.getValue());
+								return 1 * o1.getValue().compareTo(o2.getValue());
 							}
 						}
 						);
@@ -119,15 +119,23 @@ public class PrintFeatureWeights
 		}
 	}
 	
-	static public void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException
+	public static void print(String modelPath, String weightPath) throws FileNotFoundException, IOException, ClassNotFoundException
 	{
-	
-		String modelPath = "./tmp/model.txt";
-		String weightPath = "./tmp/weight.txt";
-		
 		ObjectInputStream oos = new ObjectInputStream(new FileInputStream(modelPath));
 		Classifier classifier = (Classifier) oos.readObject();
 		oos.close();
 		printFeatureWeights((MaxEnt) classifier, new File(weightPath));
+	}
+
+	public static void printWithClassifier(Classifier classifier, String weightPath) throws FileNotFoundException, IOException, ClassNotFoundException
+	{
+		printFeatureWeights((MaxEnt) classifier, new File(weightPath));
+	}
+	
+	static public void main(String[] args) throws Exception
+	{
+		String modelPath = "./tmp/model.txt";
+		String weightPath = "./tmp/weight.txt";
+		PrintFeatureWeights.print(modelPath, weightPath);	
 	}
 }

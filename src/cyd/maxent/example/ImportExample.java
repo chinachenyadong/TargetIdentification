@@ -1,4 +1,4 @@
-package cyd.example;
+package cyd.maxent.example;
 
 import java.io.*;
 import java.util.*;

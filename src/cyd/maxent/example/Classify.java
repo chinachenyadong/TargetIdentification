@@ -1,10 +1,10 @@
-package cyd.example;
+package cyd.maxent.example;
 
 import java.io.*;
 import java.util.*;
 import java.util.regex.*;
 
-import cyd.example.ImportExample.TxtFilter;
+import cyd.maxent.example.ImportExample.TxtFilter;
 
 import cc.mallet.classify.*;
 import cc.mallet.pipe.*;
