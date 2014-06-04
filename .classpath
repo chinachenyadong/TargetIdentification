@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_07"/>
+	<classpathentry kind="lib" path="F:/code/EclipseWorkspace/Mallet/lib/bsh.jar"/>
+	<classpathentry kind="lib" path="F:/code/EclipseWorkspace/Mallet/lib/grmm-deps.jar"/>
+	<classpathentry kind="lib" path="F:/code/EclipseWorkspace/Mallet/lib/jdom-1.0.jar"/>
+	<classpathentry kind="lib" path="F:/code/EclipseWorkspace/Mallet/lib/jgrapht-0.6.0.jar"/>
+	<classpathentry kind="lib" path="F:/code/EclipseWorkspace/Mallet/lib/junit-4.5.jar"/>
+	<classpathentry kind="lib" path="F:/code/EclipseWorkspace/Mallet/lib/jwnl-1.3.jar"/>
+	<classpathentry kind="lib" path="F:/code/EclipseWorkspace/Mallet/lib/mallet.jar"/>
+	<classpathentry kind="lib" path="F:/code/EclipseWorkspace/Mallet/lib/mallet-deps.jar"/>
+	<classpathentry kind="lib" path="F:/code/EclipseWorkspace/Mallet/lib/mtj-0.9.9.jar"/>
+	<classpathentry kind="lib" path="F:/code/EclipseWorkspace/Mallet/lib/openjgraph.jar"/>
+	<classpathentry kind="lib" path="F:/code/EclipseWorkspace/Mallet/lib/trove-2.0.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
