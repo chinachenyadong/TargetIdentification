@@ -95,9 +95,9 @@ public class MeDecoder
 		double P = (double)both/p;
 		double R = (double)both/r;
 		double F = 2*P*R/(P+R);
-		System.out.println("P: "+ P);
-		System.out.println("R: "+ R);
-		System.out.println("F: "+ F);
+		System.out.println("P: "+ String.format("%.2f", P*100));
+		System.out.println("R: "+ String.format("%.2f", R*100));
+		System.out.println("F: "+ String.format("%.2f", F*100));
 	}
 	
 	static public void main(String[] args) throws IOException, ClassNotFoundException
