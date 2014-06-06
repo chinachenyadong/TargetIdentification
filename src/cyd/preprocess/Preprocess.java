@@ -132,8 +132,30 @@ public class Preprocess
 			node.setPos(pos);
 			node.setNer(ner);
 			
-			// add dependency
+			// add child dependency
+			String[] tmps = strs[5].split(" : ");
+			int depNum = (tmps.length-1)/3;
+			ArrayList<String> childDepList = new ArrayList<String>();
+			ArrayList<String> depList = new ArrayList<String>();
+			for (int i = 1; i <= depNum; ++i) 
+			{
+				childDepList.add(tmps[i*3-2] + " : " + tmps[i*3-1] + " : " + tmps[i*3]);
+				depList.add(tmps[i*3-2] + " : " + tmps[i*3-1] + " : " + tmps[i*3]);
+			}
 			
+			// add parent dependency
+			tmps = strs[6].split(" : ");
+			depNum = (tmps.length-1)/3;
+			ArrayList<String> parentDepList = new ArrayList<String>();
+			for (int i = 1; i <= depNum; ++i) 
+			{
+				parentDepList.add(tmps[i*3-2] + " : " + tmps[i*3-1] + " : " + tmps[i*3]);
+				depList.add(tmps[i*3-2] + " : " + tmps[i*3-1] + " : " + tmps[i*3]);
+			}
+			
+			node.setChildDep(childDepList);
+			node.setParentDep(parentDepList);
+			node.setDep(depList);
 			
 			nodeList.add(node);
 		}

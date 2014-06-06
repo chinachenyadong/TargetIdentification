@@ -13,12 +13,41 @@ public class Node
 	String lemma;
 	String pos;
 	String ner;
-	
-	int index;
-//	HashMap<>
+
 	ArrayList<String> childDep = new ArrayList<String>();
-	ArrayList<String> parenetDep = new ArrayList<String>();
+	ArrayList<String> parentDep = new ArrayList<String>();
 	ArrayList<String> dep = new ArrayList<String>();
+	
+	public ArrayList<String> getChildDep()
+	{
+		return childDep;
+	}
+
+	public void setChildDep(ArrayList<String> childDep)
+	{
+		this.childDep = childDep;
+	}
+
+	public ArrayList<String> getParentDep()
+	{
+		return parentDep;
+	}
+
+	public void setParentDep(ArrayList<String> parentDep)
+	{
+		this.parentDep = parentDep;
+	}
+
+	public ArrayList<String> getDep()
+	{
+		return dep;
+	}
+
+	public void setDep(ArrayList<String> dep)
+	{
+		this.dep = dep;
+	}
+
 	
 	
 	public String getNer()

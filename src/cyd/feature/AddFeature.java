@@ -16,7 +16,7 @@ public class AddFeature
 		// add lemma
 		AddFeature.addLemma(sb, node);
 //		AddFeature.addPos(sb, node);
-//		AddFeature.addTargetRate(sb, node, targetRateMap);
+		AddFeature.addTargetRate(sb, node, targetRateMap);
 //		AddFeature.addContextPos(sb, index, nodeList, 1);
 //		AddFeature.addContextLemmas(sb, index, nodeList, 1);
 //		AddFeature.addNer(sb, node);
@@ -25,13 +25,39 @@ public class AddFeature
 //		AddFeature.addSmallTF(sb, node, smallTF);
 //		AddFeature.addBigTF(sb, node, bigTF);
 		
-		AddFeature.addDep(sb, index, nodeList);
+//		AddFeature.addDepNum(sb, node.getDep());
+		AddFeature.addDep(sb, node.getChildDep());
+//		AddFeature.addDepWord(sb, node.getChildDep());
+		
+		
+		
 		sb.append("\n");
 	}
 
-	public static void addDep(StringBuilder sb, int index, ArrayList<Node> nodeList) throws IOException
+	public static void addDepWord(StringBuilder sb, ArrayList<String> list) throws IOException
 	{
-		
+		int num = list.size();
+		for (int i = 0; i < num; ++i) 
+		{
+			String[] strs = list.get(i).split(" : ");
+			sb.append(" dep/" + strs[0] + ":1" + " DepWord/" + strs[2] + ":1");
+		}
+	}
+	
+	public static void addDep(StringBuilder sb, ArrayList<String> list) throws IOException
+	{
+		int num = list.size();
+		for (int i = 0; i < num; ++i) 
+		{
+			String[] strs = list.get(i).split(" : ");
+			sb.append(" dep/" + strs[0] + ":1");
+		}
+	}
+	
+	public static void addDepNum(StringBuilder sb, ArrayList<String> list) throws IOException
+	{
+		int num = list.size();
+		sb.append(" DepNum:" + num);
 	}
 	
 	public static void addSmallTF(StringBuilder sb, Node node, HashMap<String, Double> smallTF) throws IOException
@@ -104,7 +130,7 @@ public class AddFeature
 	
 	public static void addNer(StringBuilder sb, Node node) throws IOException
 	{
-		sb.append(" " + node.getNer()+":1");
+		sb.append(" ner" + node.getNer()+":1");
 	}
 	
 	public static void addLemma(StringBuilder sb, Node node) throws IOException
