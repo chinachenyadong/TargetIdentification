@@ -23,11 +23,17 @@ class LDA
 	/* in this file we will store data on which document belongs to which topic */
 	public final static String TOPICS_PER_DOC = "tmp/topics_per_doc.txt";
 	/* number of interactions */
-	public final static int NUM_OF_ITER = 1000; // real app 1000 - 2000
+	public final static int NUM_OF_ITER = 500; // real app 1000 - 2000
 	/* the expected number of topics */
 	public final static int NUM_OF_TOPICS = 30;
 
-	public static void main(String[] args) throws Exception
+
+	/**
+	 * 1. doc word:topic
+	 * 2. topic words, weights 
+	 * 3. topic per doc
+	 */
+	public static void lda_example() throws Exception
 	{
 		ArrayList<Pipe> pipeList = new ArrayList<Pipe>();
 
@@ -118,5 +124,12 @@ class LDA
 			topicsPerDoc.write(sb1.append('\n').toString());
 		}
 		topicsPerDoc.close();
+	}
+
+	public static void main(String[] args) throws Exception
+	{
+		String inputPath = "./";
+		String outputPath = "./tmp/doc_word_topic.txt";
+
 	}
 }

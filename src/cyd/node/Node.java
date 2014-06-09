@@ -13,10 +13,21 @@ public class Node
 	String lemma;
 	String pos;
 	String ner;
+	String topic;
 
 	ArrayList<String> childDep = new ArrayList<String>();
 	ArrayList<String> parentDep = new ArrayList<String>();
 	ArrayList<String> dep = new ArrayList<String>();
+	
+	public String getTopic()
+	{
+		return topic;
+	}
+
+	public void setTopic(String topic)
+	{
+		this.topic = topic;
+	}
 	
 	public ArrayList<String> getChildDep()
 	{
@@ -48,8 +59,6 @@ public class Node
 		this.dep = dep;
 	}
 
-	
-	
 	public String getNer()
 	{
 		return ner;

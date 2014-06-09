@@ -13,5 +13,7 @@
 	<classpathentry kind="lib" path="F:/code/EclipseWorkspace/Mallet/lib/mtj-0.9.9.jar"/>
 	<classpathentry kind="lib" path="F:/code/EclipseWorkspace/Mallet/lib/openjgraph.jar"/>
 	<classpathentry kind="lib" path="F:/code/EclipseWorkspace/Mallet/lib/trove-2.0.2.jar"/>
+	<classpathentry kind="lib" path="F:/code/EclipseWorkspace/Mallet/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="F:/code/EclipseWorkspace/Mallet/lib/jaxen-1.1-beta-6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

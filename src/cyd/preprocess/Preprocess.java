@@ -20,7 +20,7 @@ public class Preprocess
 	/**
 	 * load 1. target rate; 2. FrameNet train lemma frequency; 3. Gutenberg lemma frequency
 	 */
-	public static void init() throws IOException
+	public static void load() throws IOException
 	{
 		// load target rate
 		BufferedReader br = new BufferedReader(new FileReader("./data/target_rate.txt"));
@@ -33,7 +33,7 @@ public class Preprocess
 		br.close();
 		
 		// load framenet Train lemma frequency file
-		br = new BufferedReader(new FileReader("./data/FrameNet_Train_LemmaFrequency.txt"));
+		br = new BufferedReader(new FileReader("./data/term_frequency/FrameNet_Train_LemmaFrequency.txt"));
 		while ( (line = br.readLine()) != null ) 
 		{
 			String[] strs = line.split(" ");
@@ -42,7 +42,7 @@ public class Preprocess
 		br.close();
 				
 		// load Gutenberg lemma frequency file
-		br = new BufferedReader(new FileReader("./data/Gutenberg_LemmaFrequency.txt"));
+		br = new BufferedReader(new FileReader("./data/term_frequency/Gutenberg_LemmaFrequency.txt"));
 		while ( (line = br.readLine()) != null ) 
 		{
 			String[] strs = line.split("\t");
@@ -84,10 +84,10 @@ public class Preprocess
 	 * @param outputFile
 	 * @param out
 	 */
-	public static void preprocess(String inputFile, String outputFile, PrintStream out) throws IOException
+	public static void preprocess(String inputFile, String outputFile) throws IOException
 	{
 		lineIndex = 0;
-		out.println("change raw file to node of feature represent...");
+		System.out.println("change raw file to node of feature represent...");
 		BufferedReader br = new BufferedReader(new FileReader(inputFile));
 		FileWriter fw = new FileWriter(outputFile);
 		String line = null;
@@ -128,9 +128,11 @@ public class Preprocess
 			String pos = strs[2];
 			String lemma = strs[3];
 			String ner = strs[4];
+			String topic = strs[7];
 			node.setLemma(lemma);
 			node.setPos(pos);
 			node.setNer(ner);
+			node.setTopic(topic);
 			
 			// add child dependency
 			String[] tmps = strs[5].split(" : ");
@@ -159,6 +161,8 @@ public class Preprocess
 			
 			nodeList.add(node);
 		}
+		String res = maxEntSelectFeature(nodeList);
+		fw.write(res);
 		br.close();
 		fw.close();
 	}

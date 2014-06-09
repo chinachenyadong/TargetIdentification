@@ -6,6 +6,8 @@ import cyd.maxent.MeDecoder;
 import cyd.maxent.MeTrainer;
 import cyd.preprocess.Preprocess;
 
+import cyd.feature.gain.*;;
+
 public class Main
 {
 
@@ -14,29 +16,37 @@ public class Main
 	 */
 	public static void main(String[] args) throws Exception
 	{
-		// TODO Auto-generated method stub
-		String trainRaw = "./data/train.raw";
-		String testRaw = "./data/test.raw";
-		
-		String trainPath = "./tmp/train.input";
-		String modelPath = "./tmp/model.txt";
-		String testPath = "./tmp/test.input";
 
-		PrintStream out = new PrintStream(System.out);
-		Preprocess.init();
-		Preprocess.preprocess(trainRaw, trainPath, out);
-		Preprocess.preprocess(testRaw, testPath, out);
+		// topic num select
+//		String topicIn = "./tmp/topic.input";
+//		String topicIn = "./data/frameAce.input";
+//		String topicOut= "./tmp/topic.output";
+//		String trainRaw = "./data/train.raw";
+//		String trainPath = "./tmp/train.topic";
+//		String testRaw = "./data/test.raw";
+//		String testPath = "./tmp/test.topic";
+//		Topic.gainTopics(topicIn, topicOut, 200, 1000);	
+//		Topic.topicsToRaw(topicOut, trainRaw, trainPath);
+//		Topic.topicsToRaw(topicOut, testRaw, testPath);
+		
+		// TODO Auto-generated method stub
+		String trainPath = "./data/train.raw";
+		String testPath = "./data/test.raw";
+		
+		String trainInput = "./tmp/train.input";
+		String modelPath = "./tmp/model.txt";
+		String testInput = "./tmp/test.input";
+
+		Preprocess.load();
+		Preprocess.preprocess(trainPath, trainInput);
+		Preprocess.preprocess(testPath, testInput);
 		
 		// train the model
-		MeTrainer.TrainMaxent(trainPath, modelPath);
+		MeTrainer.TrainMaxent(trainInput, modelPath);
 
-		// decode
 		MeDecoder decoder = new MeDecoder(modelPath);
-		decoder.decodeOnFeatureTable(testPath);
-		
-		// exist a problem : can't print weights following with decode 
-//		String weightPath = "./tmp/weight.txt";
-//		PrintFeatureWeights.print(modelPath, weightPath);
+		decoder.decodeOnFeatureTable(testInput);
+
 		System.exit(0);
 	}
 

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
@@ -46,7 +47,7 @@ public class MeDecoder
 		}
 	}
 	
-	public void decodeOnFeatureTable(String testPath) throws FileNotFoundException
+	public void decodeOnFeatureTable(String testPath) throws Exception
 	{
 		CsvIterator reader =
 	            new CsvIterator(new FileReader(testPath),
@@ -59,6 +60,8 @@ public class MeDecoder
 	
 		ArrayList<Classification> list = classifier.classify(testingInstances);
 		int both = 0, p = 0, r = 0;
+		FileWriter fw = new FileWriter("./tmp/result.txt");
+		
 		for (int i = 0; i < list.size(); i++)
 		{
 			Classification c = list.get(i);
@@ -69,7 +72,7 @@ public class MeDecoder
 			String label = instance.getTarget().toString();
 			String test = labeling.getBestLabel().toString();
 		
-			
+			fw.write(label + " : " + test + "\n");
 			if (test.equals(label) && label.equals("1"))
 			{
 				++both;
@@ -83,6 +86,7 @@ public class MeDecoder
 				++r;
 			}		
 			
+			
 //			System.out.print(label + " " + test + " ");
 //			for (int rank = 0; rank < labeling.numLocations(); rank++)
 //            {
@@ -91,6 +95,7 @@ public class MeDecoder
 //            }
 //            System.out.println();
 		}
+		fw.close();
 		System.out.println(testingInstances.size());
 		double P = (double)both/p;
 		double R = (double)both/r;
@@ -100,7 +105,7 @@ public class MeDecoder
 		System.out.println("F: "+ String.format("%.2f", F*100));
 	}
 	
-	static public void main(String[] args) throws IOException, ClassNotFoundException
+	static public void main(String[] args) throws Exception
 	{
 		String modelPath = "./tmp/model.txt";	
 		String testPath = "./tmp/test.txt";

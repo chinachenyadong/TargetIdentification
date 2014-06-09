@@ -13,27 +13,60 @@ public class AddFeature
 {
 	public static void addFeatures(StringBuilder sb, Node node, int index, ArrayList<Node> nodeList, HashMap<String, Double> targetRateMap, HashMap<String, Double> smallTF, HashMap<String, Double> bigTF) throws IOException
 	{
-		// add lemma
+		/** lexical */
 		AddFeature.addLemma(sb, node);
-//		AddFeature.addPos(sb, node);
-		AddFeature.addTargetRate(sb, node, targetRateMap);
-//		AddFeature.addContextPos(sb, index, nodeList, 1);
-//		AddFeature.addContextLemmas(sb, index, nodeList, 1);
 //		AddFeature.addNer(sb, node);
-//		AddFeature.addLemmaPosJoint(sb, node);
+//		AddFeature.addPos(sb, node);
 		
+		/** context */
+//		AddFeature.addContextNer(sb, index, nodeList, 3);
+//		AddFeature.addContextPos(sb, index, nodeList, 3);
+//		AddFeature.addContextLemmas(sb, index, nodeList, 3);
+		
+		/** statistics */
+		AddFeature.addTargetRate(sb, node, targetRateMap);
 //		AddFeature.addSmallTF(sb, node, smallTF);
 //		AddFeature.addBigTF(sb, node, bigTF);
 		
+		/** dependency */
+//		AddFeature.addDep(sb, node.getChildDep());
 //		AddFeature.addDepNum(sb, node.getDep());
-		AddFeature.addDep(sb, node.getChildDep());
+		
+		/** topic */
+//		AddFeature.addTopic(sb, node);
+		
+		/** binary featrue */
+//		AddFeature.addLemmaPosJoint(sb, node);
 //		AddFeature.addDepWord(sb, node.getChildDep());
-		
-		
 		
 		sb.append("\n");
 	}
 
+	public static void addContextNer(StringBuilder sb, int index, ArrayList<Node> nodeList, int len) throws IOException
+	{
+		for (int i = index-len; i <= index+len; ++i) 
+		{
+			if (i == index) 
+			{
+				continue;
+			}
+			int labelIndex = i - index;
+			if (i < 0 || i >= nodeList.size()) 
+			{
+				sb.append(" ner(" + labelIndex + ")/-1" + ":1");
+			}
+			else 
+			{
+				sb.append(" ner(" + labelIndex + ")/" + nodeList.get(i).getNer());
+			}
+		}
+	}
+	
+	public static void addTopic(StringBuilder sb, Node node) throws IOException
+	{
+		sb.append(" topic/" + node.getTopic() + ":1");
+	}
+	
 	public static void addDepWord(StringBuilder sb, ArrayList<String> list) throws IOException
 	{
 		int num = list.size();
@@ -156,11 +189,7 @@ public class AddFeature
 
 	public static void main(String[] args) throws IOException
 	{
-		String tmp = "we are/hehe";
-		String[] strs = tmp.split("\\s+");
-		for (String str : strs) {
-			System.out.println(str);
-		}
+		
 	}
 
 }

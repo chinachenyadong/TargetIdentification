@@ -27592,39 +27592,3 @@ Sen.No.1200 || KBEval__MIT.xml
 15 || nuclear || JJ || nuclear || O || child :  || parent : conj_or : 11 : chemical : amod : 16 : weapon || null || NULL
 16 || weapons || NNS || weapon || O || child : amod : 11 : chemical : amod : 13 : biological : amod : 15 : nuclear || parent : dobj : 10 : develop || null || NULL
 17 || ? || . || ? || O || child :  || parent :  || null || NULL
-
-Sen.No.1201 || KBEval__MIT.xml
-0 || Al || NNP || Al || PERSON || child :  || parent : nn : 1 : Wafa || null || NULL
-1 || Wafa || NNP || Wafa || PERSON || child : nn : 0 : Al || parent : nsubj : 3 : one || null || NULL
-2 || is || VBZ || be || O || child :  || parent : cop : 3 : one || null || NULL
-3 || one || CD || one || NUMBER || child : cop : 2 : be : prep_of : 6 : organization : nsubj : 1 : Wafa || parent : root : -1 : null || null || NULL
-4 || of || IN || of || O || child :  || parent :  || null || NULL
-5 || the || DT || the || O || child :  || parent : det : 6 : organization || null || NULL
-6 || organizations || NNS || organization || O || child : det : 5 : the : rcmod : 11 : freeze || parent : poss : 8 : asset : prep_of : 3 : one || null || NULL
-7 || whose || WP$ || whose || O || child :  || parent :  || null || NULL
-8 || assets || NNS || asset || O || child : poss : 6 : organization || parent : nsubjpass : 11 : freeze || assets.n || Possession
-9 || have || VBP || have || O || child :  || parent : aux : 11 : freeze || null || NULL
-10 || been || VBN || be || O || child :  || parent : auxpass : 11 : freeze || null || NULL
-11 || frozen || VBN || freeze || O || child : auxpass : 10 : be : ccomp : 22 : give : prep_in : 15 : States : nsubjpass : 8 : asset : aux : 9 : have : prep_amid : 17 : suspicion || parent : rcmod : 6 : organization || null || NULL
-12 || in || IN || in || O || child :  || parent :  || null || NULL
-13 || the || DT || the || O || child :  || parent : det : 15 : States || null || NULL
-14 || United || NNP || United || LOCATION || child :  || parent : nn : 15 : States || null || NULL
-15 || States || NNPS || States || LOCATION || child : det : 13 : the : nn : 14 : United || parent : prep_in : 11 : freeze || null || NULL
-16 || amid || IN || amid || O || child :  || parent :  || null || NULL
-17 || suspicions || NNS || suspicion || O || child :  || parent : prep_amid : 11 : freeze || suspicion.n || Awareness
-18 || that || IN || that || O || child :  || parent : mark : 22 : give || null || NULL
-19 || it || PRP || it || O || child :  || parent : nsubj : 22 : give || null || NULL
-20 || might || MD || might || O || child :  || parent : aux : 22 : give || null || NULL
-21 || be || VB || be || O || child :  || parent : aux : 22 : give || null || NULL
-22 || giving || VBG || give || O || child : mark : 18 : that : nsubj : 19 : it : dobj : 23 : support : aux : 21 : be : aux : 20 : might : prep_to : 30 : network || parent : ccomp : 11 : freeze || give.v || Giving
-23 || support || NN || support || O || child :  || parent : dobj : 22 : give || null || NULL
-24 || to || TO || to || O || child :  || parent :  || null || NULL
-25 || Osama || NNP || Osama || PERSON || child :  || parent : nn : 27 : Laden || null || NULL
-26 || Bin || NNP || Bin || PERSON || child :  || parent : nn : 27 : Laden || null || NULL
-27 || Laden || NNP || Laden || PERSON || child : nn : 26 : Bin : nn : 25 : Osama || parent : poss : 30 : network || null || NULL
-28 || 's || POS || 's || O || child :  || parent :  || null || NULL
-29 || al-Qaeda || NNP || al-Qaeda || MISC || child :  || parent : nn : 30 : network || null || NULL
-30 || network || NN || network || O || child : poss : 27 : Laden : nn : 29 : al-Qaeda || parent : prep_to : 22 : give || network.n || Network
-31 || . || . || . || O || child :  || parent :  || null || NULL
-
-Sen.No.1202 || KBEval__MIT.xml
